@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
