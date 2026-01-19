@@ -24,9 +24,7 @@ const Footer = () => {
             <div className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center">
               <span className="font-serif text-lg font-semibold">M</span>
             </div>
-            <span className="font-serif text-xl font-medium">
-              MindfulCare
-            </span>
+            <span className="font-serif text-xl font-medium">MindfulCare</span>
           </div>
 
           {/* Quick Links */}

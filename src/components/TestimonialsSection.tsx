@@ -5,19 +5,22 @@ const TestimonialsSection = () => {
     {
       name: "Sarah M.",
       role: "Anxiety Treatment",
-      content: "After years of struggling with anxiety, I finally found a therapist who truly understood me. The techniques I learned have transformed how I handle stress. I'm forever grateful.",
+      content:
+        "After years of struggling with anxiety, I finally found a therapist who truly understood me. The techniques I learned have transformed how I handle stress. I'm forever grateful.",
       rating: 5,
     },
     {
       name: "James & Emily T.",
       role: "Couples Therapy",
-      content: "We came in on the verge of separation. Six months later, our relationship is stronger than ever. Dr. Chen helped us communicate in ways we never thought possible.",
+      content:
+        "We came in on the verge of separation. Six months later, our relationship is stronger than ever. Dr. Chen helped us communicate in ways we never thought possible.",
       rating: 5,
     },
     {
       name: "Michael R.",
       role: "Depression Recovery",
-      content: "The team at MindfulCare gave me hope when I had none. Their compassionate, evidence-based approach helped me rediscover joy in life again.",
+      content:
+        "The team at MindfulCare gave me hope when I had none. Their compassionate, evidence-based approach helped me rediscover joy in life again.",
       rating: 5,
     },
   ];
@@ -34,14 +37,14 @@ const TestimonialsSection = () => {
             Stories of Healing
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Hear from individuals and families who have found support, 
-            healing, and hope through our services.
+            Hear from individuals and families who have found support, healing, and hope through our
+            services.
           </p>
         </div>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial, _index) => (
             <div
               key={testimonial.name}
               className="card-calm relative group hover:shadow-xl transition-all duration-300"
@@ -59,18 +62,12 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Content */}
-              <p className="text-foreground leading-relaxed mb-6 italic">
-                "{testimonial.content}"
-              </p>
+              <p className="text-foreground leading-relaxed mb-6 italic">"{testimonial.content}"</p>
 
               {/* Author */}
               <div className="border-t border-border/50 pt-4">
-                <p className="font-serif font-semibold text-foreground">
-                  {testimonial.name}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.role}
-                </p>
+                <p className="font-serif font-semibold text-foreground">{testimonial.name}</p>
+                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
               </div>
             </div>
           ))}

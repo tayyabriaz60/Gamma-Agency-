@@ -6,7 +6,8 @@ const ServicesSection = () => {
     {
       icon: Brain,
       title: "Individual Therapy",
-      description: "One-on-one sessions to address anxiety, depression, trauma, and personal growth.",
+      description:
+        "One-on-one sessions to address anxiety, depression, trauma, and personal growth.",
       color: "bg-sage-light",
     },
     {
@@ -53,27 +54,27 @@ const ServicesSection = () => {
             Comprehensive Mental Health Care
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            We offer a wide range of therapeutic services to support you on 
-            your journey toward emotional wellness and personal growth.
+            We offer a wide range of therapeutic services to support you on your journey toward
+            emotional wellness and personal growth.
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {services.map((service, _index) => (
             <div
               key={service.title}
               className="group card-calm hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
-              <div className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div
+                className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+              >
                 <service.icon className="w-8 h-8 text-primary" />
               </div>
               <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                {service.description}
-              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
               <span className="inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Learn more <ArrowRight className="w-4 h-4" />
               </span>

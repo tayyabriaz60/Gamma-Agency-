@@ -5,22 +5,26 @@ const WhyChooseUs = () => {
     {
       icon: Award,
       title: "Licensed Professionals",
-      description: "All our therapists hold advanced degrees and are fully licensed in their respective fields.",
+      description:
+        "All our therapists hold advanced degrees and are fully licensed in their respective fields.",
     },
     {
       icon: Lock,
       title: "Strict Confidentiality",
-      description: "Your sessions and personal information are protected by the highest ethical standards.",
+      description:
+        "Your sessions and personal information are protected by the highest ethical standards.",
     },
     {
       icon: Sparkles,
       title: "Evidence-Based Therapy",
-      description: "We use scientifically proven methods including CBT, DBT, and mindfulness-based approaches.",
+      description:
+        "We use scientifically proven methods including CBT, DBT, and mindfulness-based approaches.",
     },
     {
       icon: HeartHandshake,
       title: "Personalized Approach",
-      description: "Every treatment plan is tailored to your unique needs, goals, and circumstances.",
+      description:
+        "Every treatment plan is tailored to your unique needs, goals, and circumstances.",
     },
     {
       icon: Clock,
@@ -46,14 +50,14 @@ const WhyChooseUs = () => {
             You Deserve the Best Care
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            We understand that choosing a therapist is a significant decision. 
-            Here's why families trust MindfulCare for their mental health needs.
+            We understand that choosing a therapist is a significant decision. Here's why families
+            trust MindfulCare for their mental health needs.
           </p>
         </div>
 
         {/* Reasons Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => (
+          {reasons.map((reason, _index) => (
             <div
               key={reason.title}
               className="group p-6 rounded-2xl bg-card border border-border/30 hover:border-primary/30 hover:shadow-lg transition-all duration-300"

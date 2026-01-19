@@ -57,8 +57,8 @@ const ContactSection = () => {
             We're Here for You
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Taking the first step is often the hardest. Reach out today, 
-            and let's start your journey toward healing together.
+            Taking the first step is often the hardest. Reach out today, and let's start your
+            journey toward healing together.
           </p>
         </div>
 
@@ -168,9 +168,7 @@ const ContactSection = () => {
                 <div className="w-10 h-10 rounded-lg bg-ocean-light flex items-center justify-center">
                   <Clock className="w-5 h-5 text-ocean" />
                 </div>
-                <h3 className="font-serif text-xl font-semibold text-foreground">
-                  Office Hours
-                </h3>
+                <h3 className="font-serif text-xl font-semibold text-foreground">Office Hours</h3>
               </div>
               <div className="space-y-3">
                 {hours.map((schedule) => (
@@ -188,8 +186,8 @@ const ContactSection = () => {
             {/* Emergency Note */}
             <div className="p-4 rounded-xl bg-accent border border-accent-foreground/10">
               <p className="text-sm text-accent-foreground">
-                <strong>Crisis Support:</strong> If you're in crisis or need immediate help, 
-                please call the National Crisis Line at <strong>988</strong> or text HOME to 741741.
+                <strong>Crisis Support:</strong> If you're in crisis or need immediate help, please
+                call the National Crisis Line at <strong>988</strong> or text HOME to 741741.
               </p>
             </div>
           </div>

@@ -15,7 +15,8 @@ const AboutSection = () => {
     {
       icon: Users,
       title: "Expert Team",
-      description: "Licensed professionals with specialized training in diverse therapeutic approaches.",
+      description:
+        "Licensed professionals with specialized training in diverse therapeutic approaches.",
     },
   ];
 
@@ -31,9 +32,9 @@ const AboutSection = () => {
             A Place of Understanding
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            We are a dedicated team of licensed psychologists committed to providing 
-            evidence-based therapy in a warm, welcoming environment. Your mental health 
-            matters, and we're here to walk alongside you.
+            We are a dedicated team of licensed psychologists committed to providing evidence-based
+            therapy in a warm, welcoming environment. Your mental health matters, and we're here to
+            walk alongside you.
           </p>
         </div>
 
@@ -51,9 +52,7 @@ const AboutSection = () => {
               <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
                 {value.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {value.description}
-              </p>
+              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
             </div>
           ))}
         </div>
@@ -61,8 +60,8 @@ const AboutSection = () => {
         {/* Mission Statement */}
         <div className="mt-16 p-8 md:p-12 rounded-3xl bg-card border border-border/50 text-center">
           <blockquote className="font-serif text-xl md:text-2xl text-foreground italic leading-relaxed">
-            "Our mission is to provide accessible, compassionate mental health care 
-            that empowers individuals to overcome challenges and live fulfilling lives."
+            "Our mission is to provide accessible, compassionate mental health care that empowers
+            individuals to overcome challenges and live fulfilling lives."
           </blockquote>
           <p className="mt-6 text-sm font-medium text-primary">— MindfulCare Team</p>
         </div>

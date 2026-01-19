@@ -28,20 +28,27 @@ const HeroSection = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            Your Journey to{" "}
-            <span className="text-gradient">Healing</span>{" "}
-            Begins Here
+          <h1
+            className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-fade-up"
+            style={{ animationDelay: "0.1s" }}
+          >
+            Your Journey to <span className="text-gradient">Healing</span> Begins Here
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            A safe, compassionate space where you can explore your thoughts, 
-            overcome challenges, and discover the path to emotional well-being.
+          <p
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up"
+            style={{ animationDelay: "0.2s" }}
+          >
+            A safe, compassionate space where you can explore your thoughts, overcome challenges,
+            and discover the path to emotional well-being.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up"
+            style={{ animationDelay: "0.3s" }}
+          >
             <Button variant="hero" size="lg">
               Book a Session
             </Button>
@@ -51,7 +58,10 @@ const HeroSection = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-8 mt-16 pt-8 border-t border-border/30 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div
+            className="flex flex-wrap items-center justify-center gap-8 mt-16 pt-8 border-t border-border/30 animate-fade-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <div className="text-center">
               <p className="text-2xl font-serif font-semibold text-foreground">15+</p>
               <p className="text-sm text-muted-foreground">Years Experience</p>
