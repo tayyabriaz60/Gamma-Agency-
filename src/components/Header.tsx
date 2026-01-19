@@ -19,11 +19,13 @@ const Header = () => {
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-serif text-lg font-semibold">M</span>
-            </div>
+            <img
+              src="/mentalHealthLogo.png"
+              alt="MindfulCare Logo"
+              className="w-10 h-10 object-contain"
+            />
             <span className="font-serif text-xl font-medium text-foreground hidden sm:block">
-              MindfulCare
+              MentalHealth
             </span>
           </a>
 

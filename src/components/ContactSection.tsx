@@ -22,19 +22,19 @@ const ContactSection = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+92 305 7988669",
+      href: "tel:+923057988669",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "care@mindfulcare.com",
-      href: "mailto:care@mindfulcare.com",
+      value: "mentalhealthwith01@gmail.com",
+      href: "mailto:mentalhealthwith01@gmail.com",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "123 Wellness Lane, Suite 200",
+      value: "Lahore, Pakistan",
       href: "#",
     },
   ];

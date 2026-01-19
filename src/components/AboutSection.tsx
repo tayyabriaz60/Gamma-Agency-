@@ -63,7 +63,7 @@ const AboutSection = () => {
             "Our mission is to provide accessible, compassionate mental health care that empowers
             individuals to overcome challenges and live fulfilling lives."
           </blockquote>
-          <p className="mt-6 text-sm font-medium text-primary">— MindfulCare Team</p>
+          <p className="mt-6 text-sm font-medium text-primary">— MentalHealth Team</p>
         </div>
       </div>
     </section>

@@ -12,12 +12,13 @@ dist
 dist-ssr
 *.local
 
+# TypeScript build info
+*.tsbuildinfo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
-Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
@@ -27,3 +28,19 @@ Thumbs.db
 # Temp files
 *.tmp
 .cache
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# Vite
+.vite
+
+# OS
+.DS_Store
+Thumbs.db
