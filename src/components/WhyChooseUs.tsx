@@ -51,7 +51,7 @@ const WhyChooseUs = () => {
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             We understand that choosing a therapist is a significant decision. Here's why families
-            trust MindfulCare for their mental health needs.
+            trust MentalHealth for their mental health needs.
           </p>
         </div>
 

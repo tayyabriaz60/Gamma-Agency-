@@ -21,7 +21,7 @@ const Header = () => {
           <a href="#" className="flex items-center gap-2">
             <img
               src="/mentalHealthLogo.png"
-              alt="MindfulCare Logo"
+              alt="MentalHealth Logo"
               className="w-10 h-10 object-contain"
             />
             <span className="font-serif text-xl font-medium text-foreground hidden sm:block">

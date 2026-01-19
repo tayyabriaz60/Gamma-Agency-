@@ -10,9 +10,9 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Instagram, href: "https://instagram.com/_mental_health.1", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Facebook, href: "https://www.facebook.com/share/1D3eX8sath/", label: "Facebook" },
+    // { icon: Linkedin, href: "#", label: "LinkedIn" },
+    // { icon: Twitter, href: "#", label: "Twitter" },
   ];
 
   return (
@@ -21,10 +21,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Logo */}
           <div className="flex items-center gap-2 justify-center md:justify-start">
-            <div className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center">
-              <span className="font-serif text-lg font-semibold">M</span>
-            </div>
-            <span className="font-serif text-xl font-medium">MindfulCare</span>
+            <img
+              src="/mentalHealthLogo.png"
+              alt="MentalHealth Logo"
+              className="w-10 h-10 object-contain"
+            />
+            <span className="font-serif text-xl font-medium">MentalHealth</span>
           </div>
 
           {/* Quick Links */}
@@ -62,7 +64,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="text-center text-sm text-primary-foreground/60">
-          © 2025 Muhammad Abrar Hussain. All rights reserved.
+          © 2026 MentalHealth. All rights reserved.
         </p>
       </div>
     </footer>

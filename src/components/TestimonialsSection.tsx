@@ -20,7 +20,7 @@ const TestimonialsSection = () => {
       name: "Michael R.",
       role: "Depression Recovery",
       content:
-        "The team at MindfulCare gave me hope when I had none. Their compassionate, evidence-based approach helped me rediscover joy in life again.",
+        "The team at MentalHealth gave me hope when I had none. Their compassionate, evidence-based approach helped me rediscover joy in life again.",
       rating: 5,
     },
   ];
