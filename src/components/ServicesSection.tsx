@@ -1,5 +1,4 @@
 import { Brain, Heart, Users, Smile, Baby, Leaf, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const ServicesSection = () => {
   const services = [
@@ -83,11 +82,11 @@ const ServicesSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            View All Services
-          </Button>
-        </div>
+        {/*<div className="text-center mt-12">*/}
+        {/*  <Button variant="outline" size="lg">*/}
+        {/*    View All Services*/}
+        {/*  </Button>*/}
+        {/*</div>*/}
       </div>
     </section>
   );
