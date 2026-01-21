@@ -52,8 +52,8 @@ const HeroSection = () => {
             <Button variant="hero" size="lg">
               Book a Session
             </Button>
-            <Button variant="hero-outline" size="lg">
-              Learn More
+            <Button variant="hero-outline" size="lg" asChild>
+              <a href="#about">Learn More</a>
             </Button>
           </div>
 
