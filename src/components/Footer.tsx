@@ -2,10 +2,10 @@ import { Instagram, Facebook } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
-    { href: "#about", label: "About Us" },
-    { href: "#services", label: "Services" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About Us" },
+    { href: "/#services", label: "Services" },
+    { href: "/#testimonials", label: "Testimonials" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const socialLinks = [

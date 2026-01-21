@@ -6,11 +6,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "#about", label: "About Us" },
-    { href: "#services", label: "Services" },
-    { href: "#team", label: "Our Team" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About Us" },
+    { href: "/#services", label: "Services" },
+    { href: "/#why-choose-us", label: "Why Choose Us" },
+    { href: "/#testimonials", label: "Testimonials" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (

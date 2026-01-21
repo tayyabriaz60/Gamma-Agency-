@@ -39,7 +39,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section id="team" className="section-padding">
+    <section id="why-choose-us" className="section-padding">
       <div className="container-narrow mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
