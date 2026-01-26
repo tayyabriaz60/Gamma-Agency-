@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
+import PopupCalendly from "./PopupCalendly.tsx";
 
 const HeroSection = () => {
   return (
@@ -49,9 +50,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up"
             style={{ animationDelay: "0.3s" }}
           >
-            <Button variant="hero" size="lg">
-              Book a Session
-            </Button>
+            <PopupCalendly variant="hero" size="lg" />
             <Button variant="hero-outline" size="lg" asChild>
               <a href="#about">Learn More</a>
             </Button>

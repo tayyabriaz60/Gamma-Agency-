@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import PopupCalendly from "./PopupCalendly.tsx";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,9 +44,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="default" size="default">
-              Book a Session
-            </Button>
+            <PopupCalendly size="default" />
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -73,9 +71,7 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" size="lg" className="mt-2">
-                Book a Session
-              </Button>
+              <PopupCalendly size="lg" className="mt-2" />
             </div>
           </div>
         )}
