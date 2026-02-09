@@ -17,19 +17,16 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container-narrow mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
           <a href="#" className="flex items-center gap-2">
             <img
               src="/mentalHealthLogo.png"
               alt="MentalHealth Logo"
-              className="w-10 h-10 object-contain"
+              className="w-10 h-10 rounded-full object-cover"
             />
             <span className="font-serif text-xl font-medium text-foreground hidden sm:block">
               MentalHealth
             </span>
           </a>
-
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -41,13 +38,9 @@ const Header = () => {
               </a>
             ))}
           </div>
-
-          {/* CTA Button */}
           <div className="hidden md:block">
             <PopupCalendly size="default" />
           </div>
-
-          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-foreground"
@@ -56,8 +49,6 @@ const Header = () => {
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </nav>
-
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
             <div className="flex flex-col gap-4">

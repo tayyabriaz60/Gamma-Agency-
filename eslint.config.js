@@ -12,11 +12,7 @@ export default defineConfig([
   globalIgnores(["dist", "node_modules"]),
   {
     files: ["**/*.{ts,tsx,js,jsx}"],
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      prettierConfig,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierConfig],
     plugins: {
       react,
       "react-hooks": reactHooks,

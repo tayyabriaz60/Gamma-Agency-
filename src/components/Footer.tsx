@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Copyright } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -11,25 +11,20 @@ const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: "https://instagram.com/_mental_health.1", label: "Instagram" },
     { icon: Facebook, href: "https://www.facebook.com/share/1D3eX8sath/", label: "Facebook" },
-    // { icon: Linkedin, href: "#", label: "LinkedIn" },
-    // { icon: Twitter, href: "#", label: "Twitter" },
   ];
 
   return (
     <footer className="bg-forest text-primary-foreground">
       <div className="container-narrow mx-auto px-4 md:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-center">
-          {/* Logo */}
           <div className="flex items-center gap-2 justify-center md:justify-start">
             <img
               src="/mentalHealthLogo.png"
               alt="MentalHealth Logo"
-              className="w-10 h-10 object-contain"
+              className="w-10 h-10 rounded-full object-cover"
             />
             <span className="font-serif text-xl font-medium">MentalHealth</span>
           </div>
-
-          {/* Quick Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
             {quickLinks.map((link) => (
               <a
@@ -42,7 +37,6 @@ const Footer = () => {
             ))}
           </nav>
 
-          {/* Social Links */}
           <div className="flex items-center justify-center md:justify-end gap-4">
             {socialLinks.map((social) => (
               <a
@@ -63,8 +57,9 @@ const Footer = () => {
         <div className="h-px bg-primary-foreground/10 my-8" />
 
         {/* Copyright */}
-        <p className="text-center text-sm text-primary-foreground/60">
-          © 2026 MentalHealth. All rights reserved.
+        <p className="text-center text-sm text-primary-foreground/60 flex items-center justify-center gap-1">
+          <Copyright className="w-4 h-4" />
+          <span>{new Date().getFullYear()} MentalHealth. All rights reserved.</span>
         </p>
       </div>
     </footer>

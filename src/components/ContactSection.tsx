@@ -2,20 +2,48 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, Globe, Clock } from "lucide-react";
+import { sendEmail, type EmailParams } from "@/lib/sendEmail";
+import { Phone, Mail, Globe, Clock, Loader2, CheckCircle, XCircle, RefreshCw } from "lucide-react";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    subject: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setStatus("loading");
+
+    const emailParams: EmailParams = {
+      fullName: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    const { success, error } = await sendEmail(emailParams);
+
+    if (success) {
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      // Reset status after 5 seconds to allow sending another message if needed
+      setTimeout(() => setStatus("idle"), 5000);
+    } else {
+      console.error("Failed to send email:", error);
+      setStatus("error");
+    }
   };
 
   const contactInfo = [
@@ -36,7 +64,6 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding">
       <div className="container-narrow mx-auto">
-        {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
             Get in Touch
@@ -51,7 +78,6 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Form */}
           <div className="card-calm">
             <h3 className="font-serif text-2xl font-semibold text-foreground mb-6">
               Schedule a Consultation
@@ -101,6 +127,20 @@ const ContactSection = () => {
                 </div>
               </div>
               <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                  Subject
+                </label>
+                <Input
+                  id="subject"
+                  type="text"
+                  placeholder="How can we help?"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  className="bg-background border-border/50 focus:border-primary"
+                  required
+                />
+              </div>
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                   How can we help you?
                 </label>
@@ -113,18 +153,59 @@ const ContactSection = () => {
                   required
                 />
               </div>
-              <Button type="submit" variant="default" size="lg" className="w-full">
-                Request a Callback
+              <Button
+                type="submit"
+                variant="default"
+                size="lg"
+                className="w-full"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Request a Callback"
+                )}
               </Button>
+
+              {/* Status Messages */}
+              {status === "success" && (
+                <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 flex items-start gap-3 text-green-600 dark:text-green-400 animate-in fade-in slide-in-from-top-2">
+                  <CheckCircle className="h-5 w-5 mt-0.5 shrink-0" />
+                  <p className="text-sm font-medium">
+                    Thank you for reaching out! We have received your message and will get back to
+                    you shortly.
+                  </p>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-between gap-3 text-red-600 dark:text-red-400 animate-in fade-in slide-in-from-top-2">
+                  <div className="flex items-center gap-3">
+                    <XCircle className="h-5 w-5 shrink-0" />
+                    <p className="text-sm font-medium">Failed to send message. Please try again.</p>
+                  </div>
+                  <Button
+                    type="submit"
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 px-3 hover:bg-red-500/10 hover:text-red-700 -mr-2"
+                  >
+                    <RefreshCw className="h-4 w-4 mr-2" />
+                    Retry
+                  </Button>
+                </div>
+              )}
+
               <p className="text-xs text-muted-foreground text-center">
                 Your information is completely confidential and will never be shared.
               </p>
             </form>
           </div>
 
-          {/* Contact Info & Hours */}
           <div className="space-y-8">
-            {/* Contact Info */}
             <div className="card-calm">
               <h3 className="font-serif text-xl font-semibold text-foreground mb-6">
                 Contact Information
@@ -186,7 +267,6 @@ const ContactSection = () => {
               </p>
             </div>
 
-            {/* Emergency Note */}
             <div className="p-4 rounded-xl bg-accent border border-accent-foreground/10">
               <p className="text-sm text-accent-foreground">
                 <strong>Crisis Support:</strong> If you're in crisis or need immediate help, please
