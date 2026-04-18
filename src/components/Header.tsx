@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import PopupCalendly from "./PopupCalendly.tsx";
+import PaymentDialog from "./PaymentDialog.tsx";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
 
   const navLinks = [
     { href: "/#about", label: "About Us" },
@@ -38,7 +41,10 @@ const Header = () => {
               </a>
             ))}
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="outline" size="default" onClick={() => setPaymentOpen(true)}>
+              Payment Details
+            </Button>
             <PopupCalendly size="default" />
           </div>
           <button
@@ -62,11 +68,15 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <PopupCalendly size="lg" className="mt-2" />
+              <Button variant="outline" size="lg" className="mt-2" onClick={() => { setPaymentOpen(true); setIsMenuOpen(false); }}>
+                Payment Details
+              </Button>
+              <PopupCalendly size="lg" />
             </div>
           </div>
         )}
       </div>
+      <PaymentDialog open={paymentOpen} onOpenChange={setPaymentOpen} />
     </header>
   );
 };
