@@ -19,7 +19,7 @@ const Header = () => {
         <nav className="flex items-center justify-between h-16 md:h-20">
           <a href="#" className="flex items-center gap-2">
             <img
-              src="/mentalHealthLogo.png"
+              src="/mentalHealthLogo.jpg"
               alt="MentalHealth Logo"
               className="w-10 h-10 rounded-full object-cover"
             />

@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           <div className="flex items-center gap-2 justify-center md:justify-start">
             <img
-              src="/mentalHealthLogo.png"
+              src="/mentalHealthLogo.jpg"
               alt="MentalHealth Logo"
               className="w-10 h-10 rounded-full object-cover"
             />
