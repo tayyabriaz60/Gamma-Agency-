@@ -56,7 +56,6 @@
     "src/components/ui/collapsible.tsx",
     "src/components/ui/command.tsx",
     "src/components/ui/context-menu.tsx",
-    "src/components/ui/dialog.tsx",
     "src/components/ui/drawer.tsx",
     "src/components/ui/dropdown-menu.tsx",
     "src/components/ui/form.tsx",
