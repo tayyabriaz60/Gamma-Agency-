@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import PopupCalendly from "./PopupCalendly.tsx";
 import PaymentDialog from "./PaymentDialog.tsx";
 import { Button } from "@/components/ui/button";
+import { trackInitiateCheckout } from "@/lib/metaPixel";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +43,7 @@ const Header = () => {
             ))}
           </div>
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="outline" size="default" onClick={() => setPaymentOpen(true)}>
+            <Button variant="outline" size="default" onClick={() => { trackInitiateCheckout({ content_name: "Payment Details" }); setPaymentOpen(true); }}>
               Payment Details
             </Button>
             <PopupCalendly size="default" />
@@ -68,7 +69,7 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="outline" size="lg" className="mt-2" onClick={() => { setPaymentOpen(true); setIsMenuOpen(false); }}>
+              <Button variant="outline" size="lg" className="mt-2" onClick={() => { trackInitiateCheckout({ content_name: "Payment Details" }); setPaymentOpen(true); setIsMenuOpen(false); }}>
                 Payment Details
               </Button>
               <PopupCalendly size="lg" />

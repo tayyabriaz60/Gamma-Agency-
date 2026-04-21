@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,8 +8,20 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { initPixel } from "@/lib/metaPixel";
+import { usePageViewTracking } from "@/hooks/usePageViewTracking";
 
 const queryClient = new QueryClient();
+
+/** Initializes Meta Pixel once and tracks PageView on every route change. */
+const MetaPixelTracker = () => {
+  useEffect(() => {
+    initPixel();
+  }, []);
+
+  usePageViewTracking();
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -16,6 +29,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <MetaPixelTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/contact" element={<Contact />} />

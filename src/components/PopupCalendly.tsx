@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import PaymentDialog from "./PaymentDialog";
+import { trackLead } from "@/lib/metaPixel";
 
 const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL;
 
@@ -77,6 +78,7 @@ const PopupCalendly: React.FC<PopupCalendlyProps> = ({
   }, []);
 
   const openCalendly = () => {
+    trackLead({ content_name: "Book a Session" });
     window.Calendly?.initPopupWidget({ url: CALENDLY_URL });
   };
 
