@@ -6,7 +6,6 @@ import {
   EMAIL_PLACEHOLDER,
   OFFICE_ADDRESS_PLACEHOLDER,
   WHATSAPP,
-  openWhatsApp,
   scrollToContact,
 } from "@/lib/contact";
 
