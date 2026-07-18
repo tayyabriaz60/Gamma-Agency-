@@ -1,86 +1,72 @@
-import { CheckCircle2, Award, Clock, Lock, Sparkles, HeartHandshake } from "lucide-react";
+import { Shield, Layers, TrendingUp, Headphones, Zap, Award } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
-const WhyChooseUs = () => {
-  const reasons = [
-    {
-      icon: Award,
-      title: "Licensed Professionals",
-      description:
-        "All our therapists hold advanced degrees and are fully licensed in their respective fields.",
-    },
-    {
-      icon: Lock,
-      title: "Strict Confidentiality",
-      description:
-        "Your sessions and personal information are protected by the highest ethical standards.",
-    },
-    {
-      icon: Sparkles,
-      title: "Evidence-Based Therapy",
-      description:
-        "We use scientifically proven methods including CBT, DBT, and mindfulness-based approaches.",
-    },
-    {
-      icon: HeartHandshake,
-      title: "Personalized Approach",
-      description:
-        "Every treatment plan is tailored to your unique needs, goals, and circumstances.",
-    },
-    {
-      icon: Clock,
-      title: "Flexible Scheduling",
-      description: "Evening and weekend appointments available to fit your busy lifestyle.",
-    },
-    {
-      icon: CheckCircle2,
-      title: "Proven Results",
-      description: "95% of our clients report significant improvement in their mental well-being.",
-    },
-  ];
+const reasons = [
+  {
+    icon: Layers,
+    title: "Everything Under One Roof",
+    description:
+      "Websites, apps, AI, POS, ads, and strategy — one team, one vision, zero fragmentation.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Business-First Approach",
+    description:
+      "We don't just build technology. We engineer growth systems that turn offline businesses into digital powerhouses.",
+  },
+  {
+    icon: Shield,
+    title: "Premium Quality Standards",
+    description:
+      "Corporate-grade design, clean code, and scalable architecture built for long-term success.",
+  },
+  {
+    icon: Zap,
+    title: "Fast Execution",
+    description:
+      "Structured process from discovery to launch. We move quickly without compromising on quality.",
+  },
+  {
+    icon: Headphones,
+    title: "Dedicated Support",
+    description:
+      "Your success is our priority. Ongoing consultation, optimization, and partnership at every stage.",
+  },
+  {
+    icon: Award,
+    title: "Proven Track Record",
+    description:
+      "Trusted by retailers, restaurants, clinics, schools, and startups across multiple industries.",
+  },
+];
 
-  return (
-    <section id="why-choose-us" className="section-padding">
-      <div className="container-narrow mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            Why Choose Us
-          </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
-            You Deserve the Best Care
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            We understand that choosing a therapist is a significant decision. Here's why families
-            trust MentalHealth for their mental health needs.
-          </p>
-        </div>
+const WhyChooseUs = () => (
+  <section id="why-choose-us" className="section-padding relative">
+    <div className="absolute inset-0 bg-navy-dark/50" />
+    <div className="container-narrow mx-auto relative">
+      <SectionHeader
+        label="Why Choose Us"
+        title="Why Choose The Gamma Agency"
+        description="We don't just build websites. We transform businesses into digital brands — with strategy, design, technology, and marketing aligned under one premium agency."
+      />
 
-        {/* Reasons Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((reason, _index) => (
-            <div
-              key={reason.title}
-              className="group p-6 rounded-2xl bg-card border border-border/30 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-sage-light flex items-center justify-center shrink-0 group-hover:bg-primary/10 transition-colors duration-300">
-                  <reason.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                    {reason.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {reason.description}
-                  </p>
-                </div>
-              </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reasons.map((reason, index) => (
+          <div
+            key={reason.title}
+            className="card-premium group"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
+              <reason.icon className="w-7 h-7 text-primary" />
             </div>
-          ))}
-        </div>
+            <h3 className="font-serif text-xl text-foreground mb-3">{reason.title}</h3>
+            <p className="text-muted-foreground leading-relaxed text-sm">{reason.description}</p>
+          </div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default WhyChooseUs;

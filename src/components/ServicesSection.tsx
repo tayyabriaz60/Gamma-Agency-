@@ -1,196 +1,93 @@
-import { useState } from "react";
 import {
-  Brain,
-  Heart,
-  Users,
-  Smile,
-  Baby,
-  Leaf,
-  UserRound,
-  GraduationCap,
-  HeartHandshake,
-  ChevronDown,
-  ChevronUp,
+  Globe,
+  Smartphone,
+  Bot,
+  CreditCard,
+  Megaphone,
+  RefreshCw,
+  Layout,
+  Briefcase,
+  ArrowUpRight,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import SectionHeader from "./SectionHeader";
 
-const ServicesSection = () => {
-  const [showAllServices, setShowAllServices] = useState(false);
+const services = [
+  {
+    icon: Globe,
+    title: "Website Development",
+    description:
+      "Premium, high-converting websites that establish your brand authority and drive measurable business results.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    description:
+      "Native and cross-platform mobile applications designed for engagement, retention, and seamless user experience.",
+  },
+  {
+    icon: Bot,
+    title: "AI Automation",
+    description:
+      "Intelligent workflows, chatbots, and automation systems that reduce costs and accelerate operations.",
+  },
+  {
+    icon: CreditCard,
+    title: "POS Systems",
+    description:
+      "Modern point-of-sale solutions integrated with inventory, analytics, and digital payment infrastructure.",
+  },
+  {
+    icon: Megaphone,
+    title: "Meta Ads Management",
+    description:
+      "Data-driven Facebook and Instagram advertising campaigns that generate leads, sales, and brand awareness.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Business Digital Transformation",
+    description:
+      "Complete offline-to-online transformation — strategy, systems, branding, and technology aligned for growth.",
+  },
+  {
+    icon: Layout,
+    title: "Landing Pages",
+    description:
+      "Conversion-optimized landing pages built for campaigns, product launches, and high-intent lead generation.",
+  },
+  {
+    icon: Briefcase,
+    title: "Business Consultation",
+    description:
+      "Expert digital strategy sessions to identify opportunities, reduce risk, and build your roadmap to success.",
+  },
+];
 
-  const therapyTypes = [
-    {
-      icon: Brain,
-      title: "Individual Therapy",
-      description: "One-on-one sessions to address personal challenges and foster growth.",
-      color: "bg-sage-light",
-    },
-    {
-      icon: Heart,
-      title: "Couples Therapy",
-      description: "Strengthen your relationship through improved communication and understanding.",
-      color: "bg-ocean-light",
-    },
-    {
-      icon: Users,
-      title: "Family Counseling",
-      description: "Navigate family dynamics and build healthier, more supportive relationships.",
-      color: "bg-accent",
-    },
-    {
-      icon: HeartHandshake,
-      title: "Group Counseling",
-      description:
-        "Connect with others in a supportive group setting for shared healing experiences.",
-      color: "bg-sage-light",
-    },
-  ];
+const ServicesSection = () => (
+  <section id="services" className="section-padding bg-navy-dark/30">
+    <div className="container-narrow mx-auto">
+      <SectionHeader
+        label="Our Services"
+        title="Complete Digital Solutions"
+        description="From strategy to execution — every service you need to build, launch, and scale your digital business."
+      />
 
-  const ageGroups = [
-    {
-      icon: Baby,
-      title: "Children",
-      description:
-        "Age-appropriate therapy designed to support emotional development and well-being.",
-      color: "bg-ocean-light",
-    },
-    {
-      icon: UserRound,
-      title: "Adults",
-      description:
-        "Comprehensive mental health support tailored to adult life challenges and goals.",
-      color: "bg-accent",
-    },
-    {
-      icon: GraduationCap,
-      title: "Seniors",
-      description: "Compassionate care addressing the unique emotional needs of older adults.",
-      color: "bg-sage-light",
-    },
-  ];
-
-  const additionalServices = [
-    {
-      icon: Smile,
-      title: "Anxiety & Depression",
-      description: "Evidence-based treatments to help you manage symptoms and reclaim your life.",
-      color: "bg-ocean-light",
-    },
-    {
-      icon: Leaf,
-      title: "Stress Management",
-      description: "Learn practical techniques to reduce stress and improve overall well-being.",
-      color: "bg-accent",
-    },
-    {
-      icon: Baby,
-      title: "Child & Teen Therapy",
-      description:
-        "Specialized support for young people facing emotional and behavioral challenges.",
-      color: "bg-sage-light",
-    },
-  ];
-
-  const ServiceCard = ({ service }: { service: (typeof therapyTypes)[0] }) => (
-    <div className="group card-calm hover:shadow-xl transition-all duration-300 cursor-pointer">
-      <div
-        className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-      >
-        <service.icon className="w-8 h-8 text-primary" />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {services.map((service) => (
+          <div key={service.title} className="card-premium group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
+            <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+              <service.icon className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="font-serif text-lg text-foreground mb-3 pr-6">{service.title}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">{service.description}</p>
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Learn more <ArrowUpRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        ))}
       </div>
-      <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{service.title}</h3>
-      <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
-      {/*<span className="inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">*/}
-      {/*  Learn more <ArrowRight className="w-4 h-4" />*/}
-      {/*</span>*/}
     </div>
-  );
-
-  return (
-    <section id="services" className="section-padding bg-muted/30">
-      <div className="container-narrow mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            Our Services
-          </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
-            Comprehensive Mental Health Care
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            We offer a wide range of therapeutic services to support you on your journey toward
-            emotional wellness and personal growth.
-          </p>
-        </div>
-
-        {/* Therapy Types */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-1 h-8 bg-primary rounded-full"></div>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground">
-              By Therapy Type
-            </h3>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {therapyTypes.map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </div>
-        </div>
-
-        {/* Age Groups */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-1 h-8 bg-ocean rounded-full"></div>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground">
-              By Age Group
-            </h3>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ageGroups.map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </div>
-        </div>
-
-        {/* Additional Services - Expandable */}
-        <div
-          className={`overflow-hidden transition-all duration-500 ${showAllServices ? "max-h-[1000px] opacity-100 mb-12" : "max-h-0 opacity-0"}`}
-        >
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-1 h-8 bg-sage rounded-full"></div>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground">
-              Specialized Services
-            </h3>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalServices.map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => setShowAllServices(!showAllServices)}
-            className="gap-2"
-          >
-            {showAllServices ? (
-              <>
-                Show Less <ChevronUp className="w-4 h-4" />
-              </>
-            ) : (
-              <>
-                View All Services <ChevronDown className="w-4 h-4" />
-              </>
-            )}
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-};
+  </section>
+);
 
 export default ServicesSection;

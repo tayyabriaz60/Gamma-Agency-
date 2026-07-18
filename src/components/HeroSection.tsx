@@ -1,88 +1,93 @@
+import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
-import PopupCalendly from "./PopupCalendly.tsx";
+import { trackLead } from "@/lib/metaPixel";
+import { CTA, openWhatsApp, scrollToContact } from "@/lib/contact";
 
 const HeroSection = () => {
+  const handleConsultation = () => {
+    trackLead({ content_name: CTA.primary });
+    scrollToContact();
+  };
+
+  const handleWhatsApp = () => {
+    trackLead({ content_name: CTA.secondaryWhatsApp });
+    openWhatsApp();
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt="Peaceful nature scene"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
-      </div>
+    <section
+      id="hero"
+      className="relative min-h-[calc(100vh-var(--header-height))] flex items-center justify-center overflow-hidden scroll-mt-[var(--header-height)]"
+    >
+      <div className="absolute inset-0 bg-gradient-hero" />
+      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-float-slow" />
+      <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-primary/8 blur-3xl animate-float" />
 
-      {/* Decorative Blobs */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-sage-light blob-shape opacity-60 animate-float-slow blur-3xl" />
-      <div className="absolute bottom-40 left-10 w-96 h-96 bg-ocean-light blob-shape opacity-40 animate-float blur-3xl" />
-
-      {/* Content */}
-      <div className="relative z-10 container-narrow mx-auto px-4 md:px-8 text-center">
-        <div className="max-w-3xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sage-light/80 text-sage-dark text-sm font-medium mb-8 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse-gentle" />
-            Licensed Mental Health Professionals
+      <div className="relative z-10 container-narrow mx-auto px-4 md:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <div
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-panel text-sm font-medium text-foreground/90 mb-8 animate-fade-up"
+            style={{ animationDelay: "0s", animationFillMode: "forwards" }}
+          >
+            <Sparkles className="w-4 h-4 text-primary" />
+            Premium Digital Transformation Agency
           </div>
 
-          {/* Main Headline */}
           <h1
-            className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-fade-up"
-            style={{ animationDelay: "0.1s" }}
+            className="font-serif text-4xl md:text-5xl lg:text-7xl font-normal text-foreground leading-[1.1] mb-8 animate-fade-up"
+            style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
           >
-            Your Journey to <span className="text-gradient">Healing</span> Begins Here
+            Transform Your Business Into A{" "}
+            <span className="text-gradient-gold italic">Digital Brand</span>
           </h1>
 
-          {/* Subheadline */}
           <p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up"
-            style={{ animationDelay: "0.2s" }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
+            style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
           >
-            A safe, compassionate space where you can explore your thoughts, overcome challenges,
-            and discover the path to emotional well-being.
+            End-to-end digital solutions for your business. From offline to online — websites,
+            mobile apps, AI automation, POS systems, and Meta Ads. Everything under one roof.
           </p>
 
-          {/* CTAs */}
           <div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up"
-            style={{ animationDelay: "0.3s" }}
+            style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
           >
-            <PopupCalendly variant="hero" size="lg" />
-            <Button variant="hero-outline" size="lg" asChild>
-              <a href="#about">Learn More</a>
+            <Button variant="hero" size="lg" onClick={handleConsultation}>
+              {CTA.primary}
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+            <Button variant="hero-outline" size="lg" onClick={handleWhatsApp}>
+              <MessageCircle className="w-5 h-5" />
+              {CTA.secondaryWhatsApp}
             </Button>
           </div>
 
-          {/* Trust Indicators */}
           <div
-            className="flex flex-wrap items-center justify-center gap-8 mt-16 pt-8 border-t border-border/30 animate-fade-up"
-            style={{ animationDelay: "0.4s" }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-border/40 animate-fade-up"
+            style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
-            <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-foreground">15+</p>
-              <p className="text-sm text-muted-foreground">Years Experience</p>
-            </div>
-            <div className="w-px h-10 bg-border/50 hidden sm:block" />
-            <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-foreground">2,500+</p>
-              <p className="text-sm text-muted-foreground">Clients Helped</p>
-            </div>
-            <div className="w-px h-10 bg-border/50 hidden sm:block" />
-            <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-foreground">100%</p>
-              <p className="text-sm text-muted-foreground">Confidential</p>
-            </div>
+            {[
+              { value: "8+", label: "Core Services" },
+              { value: "7", label: "Industries Served" },
+              { value: "5-Step", label: "Proven Process" },
+              { value: "100%", label: "Client Focused" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-2xl md:text-3xl font-serif text-primary mb-1">{stat.value}</p>
+                <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-          <div className="w-1 h-2 rounded-full bg-muted-foreground/50 animate-pulse" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float opacity-50">
+        <div className="w-6 h-10 rounded-full border-2 border-primary/30 flex items-start justify-center p-2">
+          <div className="w-1 h-2 rounded-full bg-primary animate-pulse-gentle" />
         </div>
       </div>
     </section>

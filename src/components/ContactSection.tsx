@@ -3,7 +3,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { sendEmail, type EmailParams } from "@/lib/sendEmail";
-import { Phone, Mail, Globe, Clock, Loader2, CheckCircle, XCircle, RefreshCw } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Loader2,
+  CheckCircle,
+  XCircle,
+  RefreshCw,
+  Send,
+} from "lucide-react";
+import SectionHeader from "./SectionHeader";
+import { trackLead } from "@/lib/metaPixel";
+import {
+  CTA,
+  EMAIL_PLACEHOLDER,
+  OFFICE_ADDRESS_PLACEHOLDER,
+  WHATSAPP,
+  openWhatsApp,
+} from "@/lib/contact";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +37,7 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    trackLead({ content_name: "Contact Form Submission" });
 
     const emailParams: EmailParams = {
       fullName: formData.name,
@@ -31,14 +51,7 @@ const ContactSection = () => {
 
     if (success) {
       setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-      // Reset status after 5 seconds to allow sending another message if needed
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } else {
       console.error("Failed to send email:", error);
@@ -48,40 +61,47 @@ const ContactSection = () => {
 
   const contactInfo = [
     {
-      icon: Phone,
-      label: "Phone",
-      value: "+92 305 7988669",
-      href: "tel:+923057988669",
-    },
-    {
       icon: Mail,
       label: "Email",
-      value: "mentalhealthwith01@gmail.com",
-      href: "mailto:mentalhealthwith01@gmail.com",
+      value: EMAIL_PLACEHOLDER,
+      href: null,
+    },
+    {
+      icon: Phone,
+      label: "WhatsApp",
+      value: WHATSAPP.display,
+      href: WHATSAPP.url,
+    },
+    {
+      icon: MapPin,
+      label: "Office",
+      value: OFFICE_ADDRESS_PLACEHOLDER,
+      href: null,
+    },
+    {
+      icon: Clock,
+      label: "Response Time",
+      value: "Within 24 Hours",
+      href: null,
     },
   ];
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding bg-navy-dark/30">
       <div className="container-narrow mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            Get in Touch
-          </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
-            We're Here for You
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Taking the first step is often the hardest. Reach out today, and let's start your
-            journey toward healing together.
-          </p>
-        </div>
+        <SectionHeader
+          label="Contact"
+          title="Start Your Digital Transformation"
+          description="Tell us about your business and goals. Our team will respond within 24 hours with a tailored strategy for your digital journey."
+        />
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          <div className="card-calm">
-            <h3 className="font-serif text-2xl font-semibold text-foreground mb-6">
-              Schedule a Consultation
-            </h3>
+          <div className="card-premium">
+            <h3 className="font-serif text-2xl text-foreground mb-2">{CTA.primary}</h3>
+            <p className="text-sm text-muted-foreground mb-8">
+              Fill out the form and we&apos;ll schedule a strategy call at your convenience.
+            </p>
+
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -93,7 +113,7 @@ const ContactSection = () => {
                   placeholder="Your name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-background border-border/50 focus:border-primary"
+                  className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl"
                   required
                 />
               </div>
@@ -105,57 +125,57 @@ const ContactSection = () => {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="you@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-background border-border/50 focus:border-primary"
+                    className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl"
                     required
                   />
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone (optional)
+                    Phone
                   </label>
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="(555) 123-4567"
+                    placeholder="+1 (555) 000-0000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="bg-background border-border/50 focus:border-primary"
+                    className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl"
                   />
                 </div>
               </div>
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                  Subject
+                  Service Interested In
                 </label>
                 <Input
                   id="subject"
                   type="text"
-                  placeholder="How can we help?"
+                  placeholder="e.g. Website Development, Meta Ads, AI Automation"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="bg-background border-border/50 focus:border-primary"
+                  className="bg-background/50 border-border/50 focus:border-primary h-12 rounded-xl"
                   required
                 />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  How can we help you?
+                  Tell Us About Your Business
                 </label>
                 <Textarea
                   id="message"
-                  placeholder="Tell us a bit about what you're experiencing and what kind of support you're looking for..."
+                  placeholder="Describe your business, current challenges, and what you'd like to achieve digitally..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="bg-background border-border/50 focus:border-primary min-h-[120px]"
+                  className="bg-background/50 border-border/50 focus:border-primary min-h-[140px] rounded-xl"
                   required
                 />
               </div>
               <Button
                 type="submit"
-                variant="default"
+                variant="hero"
                 size="lg"
                 className="w-full"
                 disabled={status === "loading"}
@@ -166,112 +186,99 @@ const ContactSection = () => {
                     Sending...
                   </>
                 ) : (
-                  "Request a Callback"
+                  <>
+                    Send Message
+                    <Send className="w-4 h-4" />
+                  </>
                 )}
               </Button>
 
-              {/* Status Messages */}
+              <Button
+                type="button"
+                variant="hero-outline"
+                size="lg"
+                className="w-full"
+                onClick={() => openWhatsApp()}
+              >
+                {CTA.secondaryWhatsApp}
+              </Button>
+
               {status === "success" && (
-                <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 flex items-start gap-3 text-green-600 dark:text-green-400 animate-in fade-in slide-in-from-top-2">
+                <div className="p-4 rounded-xl bg-primary/10 border border-primary/20 flex items-start gap-3 text-primary animate-in fade-in">
                   <CheckCircle className="h-5 w-5 mt-0.5 shrink-0" />
                   <p className="text-sm font-medium">
-                    Thank you for reaching out! We have received your message and will get back to
-                    you shortly.
+                    Thank you! We&apos;ve received your message and will be in touch within 24 hours.
                   </p>
                 </div>
               )}
 
               {status === "error" && (
-                <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-between gap-3 text-red-600 dark:text-red-400 animate-in fade-in slide-in-from-top-2">
+                <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 flex items-center justify-between gap-3 text-destructive">
                   <div className="flex items-center gap-3">
                     <XCircle className="h-5 w-5 shrink-0" />
-                    <p className="text-sm font-medium">Failed to send message. Please try again.</p>
+                    <p className="text-sm font-medium">Failed to send. Please try again or WhatsApp us.</p>
                   </div>
-                  <Button
-                    type="submit"
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 px-3 hover:bg-red-500/10 hover:text-red-700 -mr-2"
-                  >
-                    <RefreshCw className="h-4 w-4 mr-2" />
+                  <Button type="submit" variant="ghost" size="sm" className="shrink-0">
+                    <RefreshCw className="h-4 w-4 mr-1" />
                     Retry
                   </Button>
                 </div>
               )}
-
-              <p className="text-xs text-muted-foreground text-center">
-                Your information is completely confidential and will never be shared.
-              </p>
             </form>
           </div>
 
-          <div className="space-y-8">
-            <div className="card-calm">
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-6">
-                Contact Information
-              </h3>
+          <div className="space-y-6">
+            <div className="card-premium">
+              <h3 className="font-serif text-xl text-foreground mb-6">Get In Touch</h3>
               <div className="space-y-4">
-                {contactInfo.map((info) => (
-                  <a
-                    key={info.label}
-                    href={info.href}
-                    className="flex items-start gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors duration-200 group"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-sage-light flex items-center justify-center shrink-0">
-                      <info.icon className="w-5 h-5 text-primary" />
+                {contactInfo.map((info) => {
+                  const content = (
+                    <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors duration-200 group">
+                      <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                        <info.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">
+                          {info.label}
+                        </p>
+                        <p className="text-foreground font-medium group-hover:text-primary transition-colors">
+                          {info.value}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="text-foreground font-medium group-hover:text-primary transition-colors duration-200">
-                        {info.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
+                  );
+
+                  return info.href ? (
+                    <a key={info.label} href={info.href}>
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={info.label}>{content}</div>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="card-calm">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-ocean-light flex items-center justify-center">
-                  <Globe className="w-5 h-5 text-ocean" />
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-foreground">
-                  Global Availability
-                </h3>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <span className="text-foreground font-medium block">Available 24/7</span>
-                    <span className="text-muted-foreground text-sm">Round-the-clock support</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-ocean/5 border border-ocean/10">
-                  <div className="w-8 h-8 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-4 h-4 text-ocean" />
-                  </div>
-                  <div>
-                    <span className="text-foreground font-medium block">Flexible Scheduling</span>
-                    <span className="text-muted-foreground text-sm">Across all time zones</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-muted-foreground mt-5 leading-relaxed text-sm border-t border-border/30 pt-4">
-                Available anytime, anywhere — our team provides compassionate support across the
-                globe, whenever you need it.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl bg-accent border border-accent-foreground/10">
-              <p className="text-sm text-accent-foreground">
-                <strong>Crisis Support:</strong> If you're in crisis or need immediate help, please
-                call the National Crisis Line or contact local emergency services.
-              </p>
+            <div className="glass-panel p-6 border-primary/20">
+              <h4 className="font-serif text-lg text-foreground mb-3">Why Partner With Us?</h4>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✦</span>
+                  Free initial consultation — no obligation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✦</span>
+                  Complete solutions under one roof
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✦</span>
+                  Premium design and corporate-grade delivery
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✦</span>
+                  Ongoing support and growth partnership
+                </li>
+              </ul>
             </div>
           </div>
         </div>

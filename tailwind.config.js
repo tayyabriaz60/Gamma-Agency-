@@ -20,8 +20,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
+        serif: ["DM Serif Display", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,17 +57,16 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sage: {
-          DEFAULT: "hsl(var(--sage))",
-          light: "hsl(var(--sage-light))",
-          dark: "hsl(var(--sage-dark))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+          dark: "hsl(var(--navy-dark))",
         },
-        ocean: {
-          DEFAULT: "hsl(var(--ocean))",
-          light: "hsl(var(--ocean-light))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          muted: "hsl(var(--gold-muted))",
+          light: "hsl(var(--gold-light))",
         },
-        cream: "hsl(var(--cream))",
-        forest: "hsl(var(--forest))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

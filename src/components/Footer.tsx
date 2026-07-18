@@ -1,66 +1,135 @@
-import { Instagram, Facebook, Copyright } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Copyright, ArrowUpRight, MessageCircle } from "lucide-react";
+import Logo from "./Logo";
+import {
+  AGENCY_NAME,
+  CTA,
+  EMAIL_PLACEHOLDER,
+  OFFICE_ADDRESS_PLACEHOLDER,
+  WHATSAPP,
+  openWhatsApp,
+  scrollToContact,
+} from "@/lib/contact";
 
 const Footer = () => {
   const quickLinks = [
-    { href: "/#about", label: "About Us" },
     { href: "/#services", label: "Services" },
-    { href: "/#testimonials", label: "Testimonials" },
-    { href: "/contact", label: "Contact" },
+    { href: "/#process", label: "Process" },
+    { href: "/#portfolio", label: "Portfolio" },
+    { href: "/#contact", label: "Contact" },
+  ];
+
+  const services = [
+    "Website Development",
+    "Mobile Apps",
+    "AI Automation",
+    "Meta Ads",
+    "POS Systems",
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/_mental_health.1", label: "Instagram" },
-    { icon: Facebook, href: "https://www.facebook.com/share/1D3eX8sath/", label: "Facebook" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
   ];
 
   return (
-    <footer className="bg-forest text-primary-foreground">
-      <div className="container-narrow mx-auto px-4 md:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          <div className="flex items-center gap-2 justify-center md:justify-start">
-            <img
-              src="/mentalHealthLogo.jpg"
-              alt="MentalHealth Logo"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <span className="font-serif text-xl font-medium">MentalHealth</span>
+    <footer className="bg-navy-dark border-t border-border/40">
+      <div className="container-narrow mx-auto px-4 md:px-8 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="lg:col-span-1">
+            <Logo size="md" />
+            <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-xs">
+              Premium digital transformation agency helping physical businesses become successful
+              digital brands. Everything under one roof.
+            </p>
           </div>
-          <nav className="flex flex-wrap items-center justify-center gap-6">
-            {quickLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
 
-          <div className="flex items-center justify-center md:justify-end gap-4">
-            {socialLinks.map((social) => (
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-primary mb-5">
+              Quick Links
+            </h4>
+            <nav className="flex flex-col gap-3">
+              {quickLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group"
+                >
+                  {link.label}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-primary mb-5">
+              Services
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {services.map((service) => (
+                <li key={service}>
+                  <a
+                    href="/#services"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {service}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-primary mb-5">
+              Connect
+            </h4>
+            <div className="space-y-3 mb-5">
               <a
-                key={social.label}
-                href={social.href}
+                href={WHATSAPP.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={social.label}
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors duration-200"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                <social.icon className="w-5 h-5" />
+                <MessageCircle className="w-4 h-4 text-primary" />
+                {WHATSAPP.display}
               </a>
-            ))}
+              <p className="text-sm text-muted-foreground italic">{EMAIL_PLACEHOLDER}</p>
+              <p className="text-xs text-muted-foreground/70 italic">{OFFICE_ADDRESS_PLACEHOLDER}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => scrollToContact()}
+              className="text-xs font-semibold text-primary hover:underline mb-4 block"
+            >
+              {CTA.primary} →
+            </button>
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-border/50 flex items-center justify-center hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+                >
+                  <social.icon className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-primary-foreground/10 my-8" />
+        <div className="h-px bg-border/40 my-10" />
 
-        {/* Copyright */}
-        <p className="text-center text-sm text-primary-foreground/60 flex items-center justify-center gap-1">
-          <Copyright className="w-4 h-4" />
-          <span>{new Date().getFullYear()} MentalHealth. All rights reserved.</span>
-        </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <p className="flex items-center gap-1">
+            <Copyright className="w-4 h-4" />
+            {new Date().getFullYear()} {AGENCY_NAME}. All rights reserved.
+          </p>
+          <p className="text-xs">Transforming businesses into digital brands worldwide.</p>
+        </div>
       </div>
     </footer>
   );
