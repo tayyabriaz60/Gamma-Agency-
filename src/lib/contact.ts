@@ -8,11 +8,9 @@ export const WHATSAPP = {
     "Hello! I'd like to discuss digital transformation services with The Gamma Agency.",
 };
 
-/** Placeholder — replace when business email is confirmed */
-export const EMAIL_PLACEHOLDER = "TODO: Add business email";
+export const BUSINESS_EMAIL = "gammaagency97@gmail.com";
 
-/** Placeholder — replace when office address is confirmed */
-export const OFFICE_ADDRESS_PLACEHOLDER = "TODO: Add office address";
+export const OFFICE_ADDRESS = "Burj Al Saeed Plaza, Ichra, Lahore";
 
 export const CTA = {
   primary: "Book Your Free Consultation",

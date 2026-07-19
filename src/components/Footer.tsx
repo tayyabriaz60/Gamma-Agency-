@@ -3,8 +3,8 @@ import Logo from "./Logo";
 import {
   AGENCY_NAME,
   CTA,
-  EMAIL_PLACEHOLDER,
-  OFFICE_ADDRESS_PLACEHOLDER,
+  BUSINESS_EMAIL,
+  OFFICE_ADDRESS,
   WHATSAPP,
   scrollToContact,
 } from "@/lib/contact";
@@ -93,8 +93,13 @@ const Footer = () => {
                 <MessageCircle className="w-4 h-4 text-primary" />
                 {WHATSAPP.display}
               </a>
-              <p className="text-sm text-muted-foreground italic">{EMAIL_PLACEHOLDER}</p>
-              <p className="text-xs text-muted-foreground/70 italic">{OFFICE_ADDRESS_PLACEHOLDER}</p>
+              <a
+                href={`mailto:${BUSINESS_EMAIL}`}
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                {BUSINESS_EMAIL}
+              </a>
+              <p className="text-xs text-muted-foreground/70">{OFFICE_ADDRESS}</p>
             </div>
             <button
               type="button"

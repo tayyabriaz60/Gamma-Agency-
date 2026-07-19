@@ -18,8 +18,8 @@ import SectionHeader from "./SectionHeader";
 import { trackLead } from "@/lib/metaPixel";
 import {
   CTA,
-  EMAIL_PLACEHOLDER,
-  OFFICE_ADDRESS_PLACEHOLDER,
+  BUSINESS_EMAIL,
+  OFFICE_ADDRESS,
   WHATSAPP,
   openWhatsApp,
 } from "@/lib/contact";
@@ -63,8 +63,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: EMAIL_PLACEHOLDER,
-      href: null,
+      value: BUSINESS_EMAIL,
+      href: `mailto:${BUSINESS_EMAIL}`,
     },
     {
       icon: Phone,
@@ -75,7 +75,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       label: "Office",
-      value: OFFICE_ADDRESS_PLACEHOLDER,
+      value: OFFICE_ADDRESS,
       href: null,
     },
     {
