@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 
+export const LOGO_SRC = "/gamma_agency_logo.png";
+
 interface LogoProps {
   className?: string;
   showText?: boolean;
@@ -7,9 +9,9 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { icon: "w-8 h-8 text-sm", text: "text-lg" },
-  md: { icon: "w-10 h-10 text-base", text: "text-xl" },
-  lg: { icon: "w-12 h-12 text-lg", text: "text-2xl" },
+  sm: { image: "h-9 w-9", text: "text-lg" },
+  md: { image: "h-11 w-11", text: "text-xl" },
+  lg: { image: "h-16 w-16", text: "text-2xl" },
 };
 
 const Logo = ({ className, showText = true, size = "md" }: LogoProps) => {
@@ -17,15 +19,11 @@ const Logo = ({ className, showText = true, size = "md" }: LogoProps) => {
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <div
-        className={cn(
-          "rounded-xl bg-gradient-to-br from-primary to-gold-muted flex items-center justify-center font-serif font-bold text-primary-foreground shadow-lg",
-          s.icon
-        )}
-        aria-hidden="true"
-      >
-        Γ
-      </div>
+      <img
+        src={LOGO_SRC}
+        alt="The Gamma Agency logo"
+        className={cn("rounded-full object-cover shrink-0", s.image)}
+      />
       {showText && (
         <div className="flex flex-col leading-none">
           <span className={cn("font-serif font-semibold text-foreground tracking-tight", s.text)}>
