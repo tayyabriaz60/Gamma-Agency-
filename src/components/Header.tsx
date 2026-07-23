@@ -3,7 +3,7 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "@/components/ui/button";
 import { trackLead } from "@/lib/metaPixel";
-import { CTA, openWhatsApp, scrollToContact } from "@/lib/contact";
+import { CTA, openWhatsApp, bookConsultation } from "@/lib/contact";
 
 const navLinks = [
   { href: "/#why-choose-us", label: "Why Us" },
@@ -22,7 +22,7 @@ const Header = () => {
   const handleConsultation = () => {
     trackLead({ content_name: `Header - ${CTA.primary}` });
     setIsMenuOpen(false);
-    scrollToContact();
+    bookConsultation();
   };
 
   const handleWhatsApp = () => {

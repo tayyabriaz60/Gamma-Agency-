@@ -1,12 +1,12 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackLead } from "@/lib/metaPixel";
-import { CTA, openWhatsApp, scrollToContact } from "@/lib/contact";
+import { CTA, openWhatsApp, bookConsultation } from "@/lib/contact";
 
 const CTASection = () => {
   const handleConsultation = () => {
     trackLead({ content_name: `CTA - ${CTA.primary}` });
-    scrollToContact();
+    bookConsultation();
   };
 
   const handleWhatsApp = () => {

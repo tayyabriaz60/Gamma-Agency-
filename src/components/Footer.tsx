@@ -6,7 +6,7 @@ import {
   BUSINESS_EMAIL,
   OFFICE_ADDRESS,
   WHATSAPP,
-  scrollToContact,
+  bookConsultation,
 } from "@/lib/contact";
 
 const Footer = () => {
@@ -103,7 +103,7 @@ const Footer = () => {
             </div>
             <button
               type="button"
-              onClick={() => scrollToContact()}
+              onClick={() => bookConsultation()}
               className="text-xs font-semibold text-primary hover:underline mb-4 block"
             >
               {CTA.primary} →

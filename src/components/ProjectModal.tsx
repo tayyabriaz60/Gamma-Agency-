@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight, MessageCircle } from "lucide-react";
 import type { PortfolioProject } from "@/data/portfolioProjects";
-import { CTA, openWhatsApp, scrollToContact } from "@/lib/contact";
+import { CTA, openWhatsApp, bookConsultation } from "@/lib/contact";
 import { trackLead } from "@/lib/metaPixel";
 
 interface ProjectModalProps {
@@ -24,7 +24,7 @@ const ProjectModal = ({ project, open, onOpenChange }: ProjectModalProps) => {
   const handleConsultation = () => {
     trackLead({ content_name: `Portfolio Modal - ${project.title}` });
     onOpenChange(false);
-    scrollToContact();
+    bookConsultation();
   };
 
   const handleWhatsApp = () => {

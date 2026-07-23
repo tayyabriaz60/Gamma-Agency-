@@ -1,9 +1,11 @@
+import { openCalendlyPopup } from "@/lib/calendly";
+
 export const AGENCY_NAME = "The Gamma Agency";
 
 export const WHATSAPP = {
-  display: "+92 308 8410262",
-  tel: "+923088410262",
-  url: "https://wa.me/923088410262",
+  display: "+92 324 5278560",
+  tel: "+923245278560",
+  url: "https://wa.me/923245278560",
   defaultMessage:
     "Hello! I'd like to discuss digital transformation services with The Gamma Agency.",
 };
@@ -18,7 +20,15 @@ export const CTA = {
 };
 
 export function scrollToContact(): void {
-  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const contactSection = document.getElementById("contact");
+  if (!contactSection) return;
+  contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/** Opens Calendly when configured, otherwise scrolls to the contact form. */
+export function bookConsultation(): void {
+  if (openCalendlyPopup()) return;
+  scrollToContact();
 }
 
 export function openWhatsApp(message?: string): void {
