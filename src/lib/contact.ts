@@ -14,6 +14,12 @@ export const BUSINESS_EMAIL = "gammaagency97@gmail.com";
 
 export const OFFICE_ADDRESS = "Burj Al Saeed Plaza, Ichra, Lahore";
 
+export const SOCIAL = {
+  facebook: "https://www.facebook.com/profile.php?id=61592058151561",
+  instagram: "",
+  linkedin: "",
+};
+
 export const CTA = {
   primary: "Book Your Free Consultation",
   secondaryWhatsApp: "Chat on WhatsApp",

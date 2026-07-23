@@ -6,6 +6,7 @@ import {
   BUSINESS_EMAIL,
   OFFICE_ADDRESS,
   WHATSAPP,
+  SOCIAL,
   bookConsultation,
 } from "@/lib/contact";
 
@@ -26,10 +27,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-  ];
+    { icon: Facebook, href: SOCIAL.facebook, label: "Facebook" },
+    { icon: Instagram, href: SOCIAL.instagram, label: "Instagram" },
+    { icon: Linkedin, href: SOCIAL.linkedin, label: "LinkedIn" },
+  ].filter((social) => social.href);
 
   return (
     <footer className="bg-navy-dark border-t border-border/40">
