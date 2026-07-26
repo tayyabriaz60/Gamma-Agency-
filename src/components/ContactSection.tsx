@@ -33,10 +33,12 @@ const ContactSection = () => {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage(null);
     trackLead({ content_name: "Contact Form Submission" });
 
     const emailParams: EmailParams = {
@@ -47,14 +49,16 @@ const ContactSection = () => {
       message: formData.message,
     };
 
-    const { success, error } = await sendEmail(emailParams);
+    const { success, error, message } = await sendEmail(emailParams);
 
     if (success) {
       setStatus("success");
+      setErrorMessage(null);
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } else {
       console.error("Failed to send email:", error);
+      setErrorMessage(message ?? "Failed to send message.");
       setStatus("error");
     }
   };
@@ -213,12 +217,17 @@ const ContactSection = () => {
               )}
 
               {status === "error" && (
-                <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 flex items-center justify-between gap-3 text-destructive">
-                  <div className="flex items-center gap-3">
-                    <XCircle className="h-5 w-5 shrink-0" />
-                    <p className="text-sm font-medium">Failed to send. Please try again or WhatsApp us.</p>
+                <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive space-y-3">
+                  <div className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium">Failed to send. Please try again or WhatsApp us.</p>
+                      {errorMessage && (
+                        <p className="text-xs mt-1 opacity-90">{errorMessage}</p>
+                      )}
+                    </div>
                   </div>
-                  <Button type="submit" variant="ghost" size="sm" className="shrink-0">
+                  <Button type="submit" variant="ghost" size="sm" className="shrink-0 w-fit">
                     <RefreshCw className="h-4 w-4 mr-1" />
                     Retry
                   </Button>

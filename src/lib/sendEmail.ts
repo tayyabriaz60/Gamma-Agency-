@@ -1,4 +1,4 @@
-import emailjs from "@emailjs/browser";
+import { BUSINESS_EMAIL } from "@/lib/contact";
 
 export interface EmailParams {
   fullName: string;
@@ -8,45 +8,45 @@ export interface EmailParams {
   message: string;
 }
 
-const getEmailJsConfig = () => {
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
-
-  if (!serviceId || !templateId || !publicKey) {
-    return null;
-  }
-
-  return { serviceId, templateId, publicKey };
-};
+const FORM_SUBMIT_URL = `https://formsubmit.co/ajax/${encodeURIComponent(BUSINESS_EMAIL)}`;
 
 export const sendEmail = async (params: EmailParams) => {
-  const config = getEmailJsConfig();
-
-  if (!config) {
-    console.error("EmailJS is not configured. Add VITE_EMAILJS_* variables to .env");
-    return { success: false, error: new Error("Email service not configured") };
-  }
-
   try {
-    const templateParams = {
-      full_name: params.fullName,
-      email: params.email,
-      phone: params.phone || "Not provided",
-      subject: params.subject,
-      message: params.message,
-    };
+    const response = await fetch(FORM_SUBMIT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: params.fullName,
+        email: params.email,
+        phone: params.phone || "Not provided",
+        service: params.subject,
+        message: params.message,
+        _subject: `New consultation request — ${params.fullName}`,
+        _template: "table",
+        _captcha: "false",
+      }),
+    });
 
-    const response = await emailjs.send(
-      config.serviceId,
-      config.templateId,
-      templateParams,
-      config.publicKey
-    );
+    const data: unknown = await response.json().catch(() => null);
 
-    return { success: true, response };
+    if (!response.ok) {
+      const message =
+        data && typeof data === "object" && "message" in data
+          ? String(data.message)
+          : "Failed to send message. Please try WhatsApp instead.";
+
+      return { success: false, error: new Error(message), message };
+    }
+
+    return { success: true, response: data };
   } catch (error) {
-    console.error("EmailJS Error:", error);
-    return { success: false, error };
+    const message =
+      error instanceof Error ? error.message : "Failed to send message. Please try WhatsApp instead.";
+
+    console.error("Contact form error:", error);
+    return { success: false, error, message };
   }
 };
