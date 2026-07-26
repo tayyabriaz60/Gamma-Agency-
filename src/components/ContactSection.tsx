@@ -102,7 +102,7 @@ const ContactSection = () => {
               Fill out the form and we&apos;ll schedule a strategy call at your convenience.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Full Name
